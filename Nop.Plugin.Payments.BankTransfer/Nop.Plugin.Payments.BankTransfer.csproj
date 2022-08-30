@@ -1,0 +1,524 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+	  <OutputPath>..\..\Presentation\Nop.Web\Plugins\Nop.Plugin.Payments.BankTransfer</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
+    <!--Set this parameter to true to get the dlls copied from the NuGet cache to the output of your project.
+    You need to set this parameter to true if your plugin has a nuget package 
+    to ensure that the dlls copied from the NuGet cache to the output of your project-->
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="logo.jpg" />
+	<None Remove="plugin.json" />
+    <None Remove="Areas\Admin\Views\_ViewImports.cshtml" />
+    <None Remove="Scripts\fine-uploader\all.fine-uploader\all.fine-uploader.core.min.js" />
+    <None Remove="Scripts\fine-uploader\all.fine-uploader\all.fine-uploader.min.js" />
+    <None Remove="Scripts\fine-uploader\all.fine-uploader\continue.gif" />
+    <None Remove="Scripts\fine-uploader\all.fine-uploader\edit.gif" />
+    <None Remove="Scripts\fine-uploader\all.fine-uploader\fine-uploader-gallery.min.css" />
+    <None Remove="Scripts\fine-uploader\all.fine-uploader\fine-uploader-new.min.css" />
+    <None Remove="Scripts\fine-uploader\all.fine-uploader\fine-uploader.min.css" />
+    <None Remove="Scripts\fine-uploader\all.fine-uploader\loading.gif" />
+    <None Remove="Scripts\fine-uploader\all.fine-uploader\pause.gif" />
+    <None Remove="Scripts\fine-uploader\all.fine-uploader\placeholders\not_available-generic.png" />
+    <None Remove="Scripts\fine-uploader\all.fine-uploader\placeholders\waiting-generic.png" />
+    <None Remove="Scripts\fine-uploader\all.fine-uploader\processing.gif" />
+    <None Remove="Scripts\fine-uploader\all.fine-uploader\retry.gif" />
+    <None Remove="Scripts\fine-uploader\all.fine-uploader\trash.gif" />
+    <None Remove="Scripts\fine-uploader\azure.fine-uploader\azure.fine-uploader.core.min.js" />
+    <None Remove="Scripts\fine-uploader\azure.fine-uploader\azure.fine-uploader.min.js" />
+    <None Remove="Scripts\fine-uploader\azure.fine-uploader\continue.gif" />
+    <None Remove="Scripts\fine-uploader\azure.fine-uploader\edit.gif" />
+    <None Remove="Scripts\fine-uploader\azure.fine-uploader\fine-uploader-gallery.min.css" />
+    <None Remove="Scripts\fine-uploader\azure.fine-uploader\fine-uploader-new.min.css" />
+    <None Remove="Scripts\fine-uploader\azure.fine-uploader\fine-uploader.min.css" />
+    <None Remove="Scripts\fine-uploader\azure.fine-uploader\loading.gif" />
+    <None Remove="Scripts\fine-uploader\azure.fine-uploader\pause.gif" />
+    <None Remove="Scripts\fine-uploader\azure.fine-uploader\placeholders\not_available-generic.png" />
+    <None Remove="Scripts\fine-uploader\azure.fine-uploader\placeholders\waiting-generic.png" />
+    <None Remove="Scripts\fine-uploader\azure.fine-uploader\processing.gif" />
+    <None Remove="Scripts\fine-uploader\azure.fine-uploader\retry.gif" />
+    <None Remove="Scripts\fine-uploader\azure.fine-uploader\trash.gif" />
+    <None Remove="Scripts\fine-uploader\azure.jquery.fine-uploader\azure.jquery.fine-uploader.min.js" />
+    <None Remove="Scripts\fine-uploader\azure.jquery.fine-uploader\continue.gif" />
+    <None Remove="Scripts\fine-uploader\azure.jquery.fine-uploader\edit.gif" />
+    <None Remove="Scripts\fine-uploader\azure.jquery.fine-uploader\fine-uploader-gallery.min.css" />
+    <None Remove="Scripts\fine-uploader\azure.jquery.fine-uploader\fine-uploader-new.min.css" />
+    <None Remove="Scripts\fine-uploader\azure.jquery.fine-uploader\fine-uploader.min.css" />
+    <None Remove="Scripts\fine-uploader\azure.jquery.fine-uploader\loading.gif" />
+    <None Remove="Scripts\fine-uploader\azure.jquery.fine-uploader\pause.gif" />
+    <None Remove="Scripts\fine-uploader\azure.jquery.fine-uploader\placeholders\not_available-generic.png" />
+    <None Remove="Scripts\fine-uploader\azure.jquery.fine-uploader\placeholders\waiting-generic.png" />
+    <None Remove="Scripts\fine-uploader\azure.jquery.fine-uploader\processing.gif" />
+    <None Remove="Scripts\fine-uploader\azure.jquery.fine-uploader\retry.gif" />
+    <None Remove="Scripts\fine-uploader\azure.jquery.fine-uploader\trash.gif" />
+    <None Remove="Scripts\fine-uploader\dnd\dnd.min.js" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\continue.gif" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\edit.gif" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\fine-uploader-gallery.min.css" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\fine-uploader-new.min.css" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\fine-uploader.core.min.js" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\fine-uploader.min.css" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\fine-uploader.min.js" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\iframe.xss.response.js" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\loading.gif" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\pause.gif" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\placeholders\not_available-generic.png" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\placeholders\waiting-generic.png" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\processing.gif" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\retry.gif" />
+    <None Remove="Scripts\fine-uploader\fine-uploader\trash.gif" />
+    <None Remove="Scripts\fine-uploader\jquery.fine-uploader\continue.gif" />
+    <None Remove="Scripts\fine-uploader\jquery.fine-uploader\edit.gif" />
+    <None Remove="Scripts\fine-uploader\jquery.fine-uploader\fine-uploader-gallery.min.css" />
+    <None Remove="Scripts\fine-uploader\jquery.fine-uploader\fine-uploader-new.min.css" />
+    <None Remove="Scripts\fine-uploader\jquery.fine-uploader\fine-uploader.min.css" />
+    <None Remove="Scripts\fine-uploader\jquery.fine-uploader\iframe.xss.response.js" />
+    <None Remove="Scripts\fine-uploader\jquery.fine-uploader\jquery.fine-uploader.min.js" />
+    <None Remove="Scripts\fine-uploader\jquery.fine-uploader\loading.gif" />
+    <None Remove="Scripts\fine-uploader\jquery.fine-uploader\pause.gif" />
+    <None Remove="Scripts\fine-uploader\jquery.fine-uploader\processing.gif" />
+    <None Remove="Scripts\fine-uploader\jquery.fine-uploader\retry.gif" />
+    <None Remove="Scripts\fine-uploader\jquery.fine-uploader\trash.gif" />
+    <None Remove="Scripts\fine-uploader\lib\all.js" />
+    <None Remove="Scripts\fine-uploader\lib\azure.js" />
+    <None Remove="Scripts\fine-uploader\lib\core\all.js" />
+    <None Remove="Scripts\fine-uploader\lib\core\azure.js" />
+    <None Remove="Scripts\fine-uploader\lib\core\index.js" />
+    <None Remove="Scripts\fine-uploader\lib\core\s3.js" />
+    <None Remove="Scripts\fine-uploader\lib\core\traditional.js" />
+    <None Remove="Scripts\fine-uploader\lib\dnd.js" />
+    <None Remove="Scripts\fine-uploader\lib\jquery\azure.js" />
+    <None Remove="Scripts\fine-uploader\lib\jquery\s3.js" />
+    <None Remove="Scripts\fine-uploader\lib\jquery\traditional.js" />
+    <None Remove="Scripts\fine-uploader\lib\s3.js" />
+    <None Remove="Scripts\fine-uploader\lib\traditional.js" />
+    <None Remove="Scripts\fine-uploader\s3.fine-uploader\continue.gif" />
+    <None Remove="Scripts\fine-uploader\s3.fine-uploader\edit.gif" />
+    <None Remove="Scripts\fine-uploader\s3.fine-uploader\fine-uploader-gallery.min.css" />
+    <None Remove="Scripts\fine-uploader\s3.fine-uploader\fine-uploader-new.min.css" />
+    <None Remove="Scripts\fine-uploader\s3.fine-uploader\fine-uploader.min.css" />
+    <None Remove="Scripts\fine-uploader\s3.fine-uploader\loading.gif" />
+    <None Remove="Scripts\fine-uploader\s3.fine-uploader\pause.gif" />
+    <None Remove="Scripts\fine-uploader\s3.fine-uploader\placeholders\not_available-generic.png" />
+    <None Remove="Scripts\fine-uploader\s3.fine-uploader\placeholders\waiting-generic.png" />
+    <None Remove="Scripts\fine-uploader\s3.fine-uploader\processing.gif" />
+    <None Remove="Scripts\fine-uploader\s3.fine-uploader\retry.gif" />
+    <None Remove="Scripts\fine-uploader\s3.fine-uploader\s3.fine-uploader.core.min.js" />
+    <None Remove="Scripts\fine-uploader\s3.fine-uploader\s3.fine-uploader.min.js" />
+    <None Remove="Scripts\fine-uploader\s3.fine-uploader\trash.gif" />
+    <None Remove="Scripts\fine-uploader\s3.jquery.fine-uploader\continue.gif" />
+    <None Remove="Scripts\fine-uploader\s3.jquery.fine-uploader\edit.gif" />
+    <None Remove="Scripts\fine-uploader\s3.jquery.fine-uploader\fine-uploader-gallery.min.css" />
+    <None Remove="Scripts\fine-uploader\s3.jquery.fine-uploader\fine-uploader-new.min.css" />
+    <None Remove="Scripts\fine-uploader\s3.jquery.fine-uploader\fine-uploader.min.css" />
+    <None Remove="Scripts\fine-uploader\s3.jquery.fine-uploader\loading.gif" />
+    <None Remove="Scripts\fine-uploader\s3.jquery.fine-uploader\pause.gif" />
+    <None Remove="Scripts\fine-uploader\s3.jquery.fine-uploader\placeholders\not_available-generic.png" />
+    <None Remove="Scripts\fine-uploader\s3.jquery.fine-uploader\placeholders\waiting-generic.png" />
+    <None Remove="Scripts\fine-uploader\s3.jquery.fine-uploader\processing.gif" />
+    <None Remove="Scripts\fine-uploader\s3.jquery.fine-uploader\retry.gif" />
+    <None Remove="Scripts\fine-uploader\s3.jquery.fine-uploader\s3.jquery.fine-uploader.min.js" />
+    <None Remove="Scripts\fine-uploader\s3.jquery.fine-uploader\trash.gif" />
+    <None Remove="Views\AdminOrderPaymentInfo.cshtml" />
+    <None Remove="Views\Configure.cshtml" />
+    <None Remove="Views\OrderPaymentInfo.cshtml" />
+    <None Remove="Views\OrderRechargeCode.cshtml" />
+    <None Remove="Views\PaymentInfo.cshtml" />
+    <None Remove="Views\_ViewImports.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="logo.jpg">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="plugin.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\all.fine-uploader\all.fine-uploader.core.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\all.fine-uploader\all.fine-uploader.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\all.fine-uploader\continue.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\all.fine-uploader\edit.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\all.fine-uploader\fine-uploader-gallery.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\all.fine-uploader\fine-uploader-new.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\all.fine-uploader\fine-uploader.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\all.fine-uploader\loading.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\all.fine-uploader\pause.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\all.fine-uploader\placeholders\not_available-generic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\all.fine-uploader\placeholders\waiting-generic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\all.fine-uploader\processing.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\all.fine-uploader\retry.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\all.fine-uploader\trash.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.fine-uploader\azure.fine-uploader.core.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.fine-uploader\azure.fine-uploader.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.fine-uploader\continue.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.fine-uploader\edit.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.fine-uploader\fine-uploader-gallery.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.fine-uploader\fine-uploader-new.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.fine-uploader\fine-uploader.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.fine-uploader\loading.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.fine-uploader\pause.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.fine-uploader\placeholders\not_available-generic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.fine-uploader\placeholders\waiting-generic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.fine-uploader\processing.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.fine-uploader\retry.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.fine-uploader\trash.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.jquery.fine-uploader\azure.jquery.fine-uploader.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.jquery.fine-uploader\continue.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.jquery.fine-uploader\edit.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.jquery.fine-uploader\fine-uploader-gallery.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.jquery.fine-uploader\fine-uploader-new.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.jquery.fine-uploader\fine-uploader.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.jquery.fine-uploader\loading.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.jquery.fine-uploader\pause.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.jquery.fine-uploader\placeholders\not_available-generic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.jquery.fine-uploader\placeholders\waiting-generic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.jquery.fine-uploader\processing.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.jquery.fine-uploader\retry.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\azure.jquery.fine-uploader\trash.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\dnd\dnd.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\continue.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\edit.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\fine-uploader-gallery.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\fine-uploader-new.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\fine-uploader.core.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\fine-uploader.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\fine-uploader.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\iframe.xss.response.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\loading.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\pause.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\placeholders\not_available-generic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\placeholders\waiting-generic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\processing.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\retry.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\fine-uploader\trash.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\jquery.fine-uploader\continue.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\jquery.fine-uploader\edit.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\jquery.fine-uploader\fine-uploader-gallery.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\jquery.fine-uploader\fine-uploader-new.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\jquery.fine-uploader\fine-uploader.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\jquery.fine-uploader\iframe.xss.response.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\jquery.fine-uploader\jquery.fine-uploader.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\jquery.fine-uploader\loading.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\jquery.fine-uploader\pause.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\jquery.fine-uploader\processing.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\jquery.fine-uploader\retry.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\jquery.fine-uploader\trash.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\lib\all.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\lib\azure.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\lib\core\all.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\lib\core\azure.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\lib\core\index.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\lib\core\s3.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\lib\core\traditional.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\lib\dnd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\lib\jquery\azure.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\lib\jquery\s3.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\lib\jquery\traditional.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\lib\s3.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\lib\traditional.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.fine-uploader\continue.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.fine-uploader\edit.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.fine-uploader\fine-uploader-gallery.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.fine-uploader\fine-uploader-new.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.fine-uploader\fine-uploader.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.fine-uploader\loading.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.fine-uploader\pause.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.fine-uploader\placeholders\not_available-generic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.fine-uploader\placeholders\waiting-generic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.fine-uploader\processing.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.fine-uploader\retry.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.fine-uploader\s3.fine-uploader.core.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.fine-uploader\s3.fine-uploader.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.fine-uploader\trash.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.jquery.fine-uploader\continue.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.jquery.fine-uploader\edit.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.jquery.fine-uploader\fine-uploader-gallery.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.jquery.fine-uploader\fine-uploader-new.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.jquery.fine-uploader\fine-uploader.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.jquery.fine-uploader\loading.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.jquery.fine-uploader\pause.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.jquery.fine-uploader\placeholders\not_available-generic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.jquery.fine-uploader\placeholders\waiting-generic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.jquery.fine-uploader\processing.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.jquery.fine-uploader\retry.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.jquery.fine-uploader\s3.jquery.fine-uploader.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fine-uploader\s3.jquery.fine-uploader\trash.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\AdminOrderPaymentInfo.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\OrderPaymentInfo.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\OrderRechargeCode.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\PaymentInfo.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Configure.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\_ViewImports.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj" />
+    <ProjectReference Include="..\..\Presentation\Nop.Web\Nop.Web.csproj" />
+    <ClearPluginAssemblies Include="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\Admin\Views\_ViewImports.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\_ViewImports.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Extensions\" />
+    <Folder Include="Areas\Admin\Factories\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Factories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Scripts\fine-uploader\jquery.fine-uploader\placeholders\not_available-generic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\fine-uploader\jquery.fine-uploader\placeholders\waiting-generic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+ 
+  <!-- This target execute after "Build" target -->
+  <Target Name="NopTarget" AfterTargets="Build">
+    <MSBuild Projects="@(ClearPluginAssemblies)" Properties="PluginPath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NopClear" />
+  </Target>
+
+</Project>

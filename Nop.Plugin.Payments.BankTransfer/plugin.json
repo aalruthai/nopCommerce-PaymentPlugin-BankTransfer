@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Bank Transfer",
+  "SystemName": "Payments.BankTransfer",
+  "Version": "1.00",
+  "SupportedVersions": [ "4.50" ],
+  "Author": "TCC-Amr Alruthai",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.BankTransfer.dll",
+  "Description": "This plugin enables bank transfer payments"
+}

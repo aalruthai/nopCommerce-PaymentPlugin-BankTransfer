@@ -1,0 +1,143 @@
+﻿@inherits Nop.Web.Framework.Mvc.Razor.NopRazorPage<TModel>
+@removeTagHelper Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Nop.Web.Framework
+@model Nop.Plugin.Payments.BankTransfer.Models.PaymentInfoModel
+@using System.Text
+@using Nop.Core
+@using Nop.Core.Domain.Catalog
+@using Nop.Core.Domain.Media
+@using Nop.Services.Media
+@using Nop.Web.Framework.TagHelpers.Shared
+@using Nop.Plugin.Payments.BankTransfer
+@inject IDownloadService downloadService
+@{
+    Layout = "";
+}
+
+<table width="100%" cellspacing="2" cellpadding="1" border="0">
+    <tr>
+        <td>
+            @Html.Raw(Model.DescriptionText)
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <label asp-for="TransactionReceipt">@T("Plugins.Payment.BankTransfer.TransactionReceipt"):</label>
+        </td>
+        <td>
+            @{
+                var controlId = "TransactionReceipt";
+                Download download = null;
+                                if (!string.IsNullOrEmpty(Model.TransactionReceipt))
+                                {
+                                    download = await downloadService.GetDownloadByGuidAsync(new Guid(Model.TransactionReceipt));
+                                }
+
+                                @* register CSS and JS *@
+                //<link rel="stylesheet" href="~/lib_npm/fine-uploader/fine-uploader/fine-uploader.min.css" />
+                NopHtml.AddCssFileParts("~/Plugins/Nop.Plugin.Payments.BankTransfer/Scripts/fine-uploader/fine-uploader/fine-uploader.min.css","", true);
+                //<script asp-exclude-from-bundle="true" src="~/lib_npm/fine-uploader/jquery.fine-uploader/jquery.fine-uploader.min.js" asp-location="Footer"></script>
+                NopHtml.AddScriptParts(ResourceLocation.Footer, "~/Plugins/Nop.Plugin.Payments.BankTransfer/Scripts/fine-uploader/jquery.fine-uploader/jquery.fine-uploader.min.js", "", true, false);
+                //ex. ['jpg', 'jpeg', 'png', 'gif'] or []
+                var allowedFileExtensions = string.Join(", ", Model.AllowedFileExtensions.Select(x => "'" + x.Trim() + "'").ToList());
+                if (download != null)
+                                {
+                                    <input id="@(controlId)" name="@(controlId)" type="hidden" value="@download.DownloadGuid" />
+                                    <input id="@(controlId)Id" name="@(controlId)Id" type="hidden" value="@download.Id" />
+                                }
+                                else
+                                {
+                                    <input id="@(controlId)" name="@(controlId)" type="hidden" />
+                                    <input id="@(controlId)Id" name="@(controlId)Id" type="hidden" />
+                                }
+                       
+                                @*fine uploader container*@
+                                <div id="@(controlId)uploader"></div>
+                                @*fine uploader template (keep it synchronized to \Content\fineuploader\templates\default.html)*@
+                                <script type="text/template" asp-location="Footer" id="@(controlId)-qq-template">
+                                    <div class="qq-uploader-selector qq-uploader">
+                                        <div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
+                                            <span>@T("Common.FileUploader.DropFiles")</span>
+                                        </div>
+                                        <div class="qq-upload-button-selector qq-upload-button">
+                                            <div>@T("Common.FileUploader.Upload")</div>
+                                        </div>
+                                        <span class="qq-drop-processing-selector qq-drop-processing">
+                                            <span>@T("Common.FileUploader.Processing")</span>
+                                            <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
+                                        </span>
+                                        <ul class="qq-upload-list-selector qq-upload-list">
+                                            <li>
+                                                <div class="qq-progress-bar-container-selector">
+                                                    <div class="qq-progress-bar-selector qq-progress-bar"></div>
+                                                </div>
+                                                <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
+                                                <span class="qq-edit-filename-icon-selector qq-edit-filename-icon"></span>
+                                                <span class="qq-upload-file-selector qq-upload-file"></span>
+                                                <input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
+                                                <span class="qq-upload-size-selector qq-upload-size"></span>
+                                                <a class="qq-upload-cancel-selector qq-upload-cancel" href="#">@T("Common.FileUploader.Cancel")</a>
+                                                <a class="qq-upload-retry-selector qq-upload-retry" href="#">@T("Common.FileUploader.Retry")</a>
+                                                <a class="qq-upload-delete-selector qq-upload-delete" href="#">@T("Common.FileUploader.Delete")</a>
+                                                <span class="qq-upload-status-text-selector qq-upload-status-text"></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </script>
+                                <script asp-location="Footer">
+                                    $(document).ready(function() {
+                                        $("#@(controlId)uploader").fineUploader({
+                                            request: {
+                                                endpoint: '@(Url.RouteUrl(BankTransferDefaults.UploadFileRouteName))'
+                                            },
+                                            template: "@(controlId)-qq-template",
+                                            multiple: false,
+                                            validation: {
+                                                allowedExtensions: [@Html.Raw(allowedFileExtensions)]
+                                            },
+                                            deleteFile: {
+                                                enabled: false,
+                                                forceConfirm: true,
+                                                endpoint: '@(Url.RouteUrl(BankTransferDefaults.UploadFileRouteName))'
+                                            }
+                                        }).on("complete", function(event, id, name, responseJSON, xhr) {
+                                            $("#@(controlId)").val(responseJSON.downloadGuid);
+                                            $("#@(controlId)Id").val(responseJSON.downloadId);
+                                            if (responseJSON.success) {
+                                                $("#@(controlId + "downloadurl")").html("<a href='" + responseJSON.downloadUrl + "'>@T("Common.FileUploader.DownloadUploadedFile")</a>");
+                                                $("#@(controlId + "remove")").show();
+                                            }
+                                            if (responseJSON.message) {
+                                                alert(responseJSON.message);
+                                            }
+                                        });
+
+                                        $("#@(controlId + "remove")").on("click", function(e) {
+                                            $("#@(controlId + "downloadurl")").html("");
+                                            $("#@(controlId)").val('');
+                                            $(this).hide();
+                                        });
+                                    });
+                                </script>
+                                <div id="@(controlId + "downloadurl")">
+                                    @if (download != null)
+                                    {
+                                        <a href="@(Url.Action("GetFileUpload", "Download", new { downloadId = download.DownloadGuid }))" class="download-uploaded-file">@T("Common.FileUploader.DownloadUploadedFile")</a>
+                                    }
+                                </div>
+                                <div>
+                                    @if (download != null)
+                                    {
+                                        <a id="@(controlId + "remove")" class="remove-download-button">@T("Common.FileUploader.RemoveDownload")</a>
+                                    }
+                                    else
+                                    {
+                                        <a id="@(controlId + "remove")" class="remove-download-buttonn" style="display:none;">@T("Common.FileUploader.RemoveDownload")</a>
+                                    }
+                                </div>
+                            }
+        </td>
+    </tr>
+</table>

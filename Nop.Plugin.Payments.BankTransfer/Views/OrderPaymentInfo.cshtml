@@ -1,0 +1,48 @@
+﻿@inherits Nop.Web.Framework.Mvc.Razor.NopRazorPage<TModel>
+@removeTagHelper Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Nop.Web.Framework
+@model Nop.Plugin.Payments.BankTransfer.Models.PaymentDetailsModel
+@using System.Text
+@using Nop.Core
+@using Nop.Core.Domain.Catalog
+@using Nop.Core.Domain.Media
+@using Nop.Services.Media
+@using Nop.Web.Framework.TagHelpers.Shared
+@using Nop.Plugin.Payments.BankTransfer
+@inject IDownloadService downloadService
+@{
+    Layout = "";
+}
+
+<div class="payment-method-info">
+    <div class="title">
+        <strong>@T("Plugins.Payment.BankTransfer.PaymentDetails")</strong>
+    </div>
+    <ul class="info-list">
+        
+        <li class="payment-method">
+            <span class="label">
+                @T("Plugins.Payment.BankTransfer.TransactionReceipt"):
+            </span>
+            <span class="value">
+                @if (!string.IsNullOrWhiteSpace(Model.ReceiptDownloadUrl))
+                {
+                    <a href="@Model.ReceiptDownloadUrl" style="color: blue !important;">@T("Common.FileUploader.DownloadUploadedFile")</a>
+                }
+                
+            </span>
+        </li>
+        @if (!string.IsNullOrWhiteSpace(Model.RechargeCode))
+        {
+            <li class="payment-method">
+                    <span class="label">
+                    @T("Plugins.Payment.BankTransfer.RechargeCode"):
+                </span>
+                <span class="value">
+                    @Model.RechargeCode
+                </span>
+            </li>
+        }
+    </ul>
+</div>

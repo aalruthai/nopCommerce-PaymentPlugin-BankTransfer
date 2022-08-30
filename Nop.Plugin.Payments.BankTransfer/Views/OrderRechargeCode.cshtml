@@ -1,0 +1,25 @@
+﻿@inherits Nop.Web.Framework.Mvc.Razor.NopRazorPage<TModel>
+@removeTagHelper Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Nop.Web.Framework
+@model Nop.Plugin.Payments.BankTransfer.Models.PaymentDetailsModel
+@using System.Text
+@using Nop.Core
+@using Nop.Core.Domain.Catalog
+@using Nop.Core.Domain.Media
+@using Nop.Services.Media
+@using Nop.Web.Framework.TagHelpers.Shared
+@using Nop.Plugin.Payments.BankTransfer
+@inject IDownloadService downloadService
+@{
+    Layout = "";
+}
+@if (!string.IsNullOrEmpty(Model.RechargeCode))
+{
+    <ul class="order-overview-content">
+                
+                <li class="order-total">
+                    @T("Plugins.Payment.BankTransfer.RechargeCode"): <strong>@Model.RechargeCode</strong>
+                </li>
+            </ul>    
+}
